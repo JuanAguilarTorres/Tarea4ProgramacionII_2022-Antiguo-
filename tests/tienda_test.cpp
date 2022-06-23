@@ -16,7 +16,7 @@ namespace
         // Arrange - configurar el escenario
         Tienda *tiendaEsperada = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
 
-        Producto *producto1 = new producto(1, "Cereal", 5);
+        Producto *producto1 = new Producto(1, "Cereal", 5);
         tiendaEsperada->AgregarProducto(producto1);
 
         // Act - ejecute la operación
@@ -48,7 +48,7 @@ namespace
         tiendaLeida->CargarDesdeStreamBinario(&archivoEntrada);
 
         ostringstream streamSalidaTiendaLeida;
-        streamSalidaTiendaLeida << TiendaLeida;
+        streamSalidaTiendaLeida << tiendaLeida;
 
         ostringstream streamSalidaTiendaEsperada;
         streamSalidaTiendaEsperada << tiendaEsperada;

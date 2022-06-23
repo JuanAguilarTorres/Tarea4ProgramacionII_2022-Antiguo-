@@ -8,7 +8,7 @@
             "name": "g++ - Debug program",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/tarea2",
+            "program": "${workspaceFolder}/bin/tarea3",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/bin",
