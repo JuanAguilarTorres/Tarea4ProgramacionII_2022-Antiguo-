@@ -16,6 +16,10 @@ Producto::Producto()
     this->existencia = 0;
 }
 
+int Producto::conseguirId()
+{
+    return this->id;
+}
 
 ostream& operator << (ostream &o, const Producto *empleado)
 {
