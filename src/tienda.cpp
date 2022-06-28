@@ -39,7 +39,7 @@ void Tienda::eliminarProducto(int id)
     int indice = 0;
     for (Producto *producto : this->productos)
     {
-        if (id == producto->conseguirId()){
+        if (id == producto->obtenerId()){
             delete producto;
             productos.erase(productos.begin() + indice);
         }

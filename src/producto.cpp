@@ -16,7 +16,7 @@ Producto::Producto()
     this->existencia = 0;
 }
 
-int Producto::conseguirId()
+int Producto::obtenerId()
 {
     return this->id;
 }
