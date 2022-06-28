@@ -35,13 +35,23 @@ void Tienda::AgregarProducto(int id, string nombre, int existencias)
 }
 
 void Tienda::eliminarProducto(int id)
-{
-
+{  
+    int indice = 0;
+    for (Producto *producto : this->productos)
+    {
+        if (id == producto->conseguirId()){
+            delete producto;
+            productos.erase(productos.begin() + indice);
+        }
+        
+        indice ++;
+    }
+    
 }
 
 void Tienda::editarProducto(int id, string nombre, int existencias)
 {
-    
+
 }
 
 void Tienda::GuardarEnStreamBinario(ostream *streamSalida)
