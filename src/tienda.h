@@ -21,8 +21,8 @@ class Tienda {
     Tienda();
     ~Tienda();
 
-    void AgregarProducto(Producto *nuevoProducto);
-    void AgregarProducto(int id, string nombre, int existencias);
+    void agregarProducto(Producto *nuevoProducto);
+    void agregarProducto(int id, string nombre, int existencias);
 
     void eliminarProducto(int id);
 

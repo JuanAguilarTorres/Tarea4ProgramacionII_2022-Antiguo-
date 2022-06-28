@@ -23,12 +23,12 @@ Tienda::~Tienda()
     }
 }
 
-void Tienda::AgregarProducto(Producto *nuevoProducto)
+void Tienda::agregarProducto(Producto *nuevoProducto)
 {
     this->productos.push_back(nuevoProducto);
 }
 
-void Tienda::AgregarProducto(int id, string nombre, int existencias)
+void Tienda::agregarProducto(int id, string nombre, int existencias)
 {
     Producto *nuevoProducto = new Producto(id, nombre, existencias);
     this->productos.push_back(nuevoProducto);
@@ -51,7 +51,8 @@ void Tienda::eliminarProducto(int id)
 
 void Tienda::editarProducto(int id, string nombre, int existencias)
 {
-
+    this->eliminarProducto(id);
+    this->agregarProducto(id, nombre, existencias);
 }
 
 void Tienda::GuardarEnStreamBinario(ostream *streamSalida)
@@ -69,7 +70,7 @@ void Tienda::CargarProductoPorPosicionDesdeStreamBinario(istream *streamEntrada,
     Producto *producto = new Producto();
     streamEntrada->read((char *)producto, sizeof(Producto));
 
-    this->AgregarProducto(producto);
+    this->agregarProducto(producto);
 }
 
 void Tienda::CargarDesdeStreamBinario(istream *streamEntrada)
@@ -86,7 +87,7 @@ void Tienda::CargarDesdeStreamBinario(istream *streamEntrada)
         Producto *producto = new Producto();
         streamEntrada->read((char *)producto, sizeof(Producto)); // variable para guardar y cuántos bytes leo
 
-        this->AgregarProducto(producto);
+        this->agregarProducto(producto);
     }
     
 }
