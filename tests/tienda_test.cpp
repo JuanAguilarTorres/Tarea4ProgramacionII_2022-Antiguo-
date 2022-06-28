@@ -9,7 +9,7 @@ using namespace std;
 
 namespace
 {
-        TEST(Tienda_Test, agregar_Producto_Test)
+    TEST(Tienda_Test, agregar_Producto_Test)
     {
         /// AAA
 
@@ -18,7 +18,7 @@ namespace
         Tienda *tiendaActual = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
         
         // Act - ejecute la operación
-        tiendaActual->AgregarProducto(producto1);
+        tiendaActual->agregarProducto(producto1);
 
         std::ostringstream streamActual;
 
@@ -44,7 +44,7 @@ namespace
         Tienda *tiendaActual = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
         
         // Act - ejecute la operación
-        tiendaActual->AgregarProducto(producto1);
+        tiendaActual->agregarProducto(producto1);
         tiendaActual->eliminarProducto(1);
 
         std::ostringstream streamEsperado;
@@ -64,7 +64,32 @@ namespace
 
     }
 
-    TEST(Tienda_Test, Escribir_Leer_Binario_Tienda_Test)
+    TEST(Tienda_Test, editar_Producto_Test)
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+        Tienda *tiendaActual = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
+        
+        // Act - ejecute la operación
+        tiendaActual->agregarProducto(1,"Detergente", 5);
+        tiendaActual->editarProducto(1,"Pasta", 10);
+
+        std::ostringstream streamActual;
+
+        streamActual << tiendaActual;
+
+        std::string esperado = "TiendaA, Sitio: Tienda.com, Ubicación: 50m Norte, número: 12345678, Productos: \n[1] - Pasta, Cantidad: 10\n";
+        std::string actual = streamActual.str();
+
+        delete tiendaActual;
+
+        // Assert - valide los resultados
+        EXPECT_EQ(esperado, actual);
+
+    }
+
+    TEST(Tienda_Test, escribir_Leer_Binario_Tienda_Test)
     {
         /// AAA
 
@@ -72,7 +97,7 @@ namespace
         Tienda *tiendaEsperada = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
 
         Producto *producto1 = new Producto(1, "Cereal", 5);
-        tiendaEsperada->AgregarProducto(producto1);
+        tiendaEsperada->agregarProducto(producto1);
 
         // Act - ejecute la operación
         // Escribir un archivo de prueba

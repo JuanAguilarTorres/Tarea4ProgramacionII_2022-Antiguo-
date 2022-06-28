@@ -9,7 +9,7 @@ using namespace std;
 
 namespace
 {
-    TEST(Producto_Test, Operador_de_Salida_Test)
+    TEST(Producto_Test, operador_de_Salida_Test)
     {
         /// AAA
 
