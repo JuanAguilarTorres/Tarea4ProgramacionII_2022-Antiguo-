@@ -20,7 +20,14 @@ class Tienda {
     Tienda(string nombre, string sitioWeb, string localizacion, string telefono);
     Tienda();
     ~Tienda();
+
     void AgregarProducto(Producto *nuevoProducto);
+    void AgregarProducto(int id, string nombre, int existencias);
+
+    void eliminarProducto(int id);
+
+    void editarProducto(int id, string nombre, int existencias);
+
     void GuardarEnStreamBinario(ostream *streamSalida);
     void CargarDesdeStreamBinario(istream *streamEntrada);
     void CargarProductoPorPosicionDesdeStreamBinario(istream *streamEntrada, int posicionProducto);

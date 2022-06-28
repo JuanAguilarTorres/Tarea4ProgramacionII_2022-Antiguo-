@@ -28,6 +28,22 @@ void Tienda::AgregarProducto(Producto *nuevoProducto)
     this->productos.push_back(nuevoProducto);
 }
 
+void Tienda::AgregarProducto(int id, string nombre, int existencias)
+{
+    Producto *nuevoProducto = new Producto(id, nombre, existencias);
+    this->productos.push_back(nuevoProducto);
+}
+
+void Tienda::eliminarProducto(int id)
+{
+
+}
+
+void Tienda::editarProducto(int id, string nombre, int existencias)
+{
+    
+}
+
 void Tienda::GuardarEnStreamBinario(ostream *streamSalida)
 {
     for (Producto *producto : this->productos)
