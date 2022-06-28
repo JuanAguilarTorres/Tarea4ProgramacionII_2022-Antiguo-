@@ -66,4 +66,48 @@ namespace
         EXPECT_EQ(esperado, salidaTiendaLeidaDeArchivo);
     }
     
+    TEST(Tienda_Test, eliminar_Producto_Test)
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+        Producto *producto1 = new Producto(1,"Detergente", 5);
+        Tienda *tiendaEsperado = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
+        Tienda *tiendaActual = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
+        
+        // Act - ejecute la operación
+        tiendaActual->AgregarProducto(producto1);
+        tiendaActual->eliminarProducto(1);
+
+        std::ostringstream streamEsperado;
+        std::ostringstream streamActual;
+
+        streamEsperado << tiendaEsperado;
+        streamActual << tiendaActual;
+
+        std::string esperado = streamEsperado.str();
+        std::string actual = streamActual.str();
+
+        delete tiendaEsperado;
+        delete tiendaActual;
+
+        // Assert - valide los resultados
+        EXPECT_EQ(esperado, actual);
+
+    }
+
+    TEST(Tienda_Test, _Test)
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+
+        // Act - ejecute la operación
+        string esperado = "";
+        string actual = "";
+
+        // Assert - valide los resultados
+        EXPECT_EQ(esperado, actual);
+    }
 }
+
