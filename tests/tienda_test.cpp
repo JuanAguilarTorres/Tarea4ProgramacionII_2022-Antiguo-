@@ -56,7 +56,7 @@ namespace
         delete tiendaLeida;
         delete tiendaEsperada;
 
-        string esperado = "TiendaA. Sitio: Tienda.com, Ubicación: 50m Norte, número: 12345678. Productos: \n[1] - Cereal, Cantidad: 5\n"; 
+        string esperado = "TiendaA, Sitio: Tienda.com, Ubicación: 50m Norte, número: 12345678, Productos: \n[1] - Cereal, Cantidad: 5\n"; 
         string salidaTiendaEsperada = streamSalidaTiendaEsperada.str();
 
         // Primero, validar la salida de la Tienda esperada sea correcta
