@@ -19,6 +19,6 @@ Producto::Producto()
 
 ostream& operator << (ostream &o, const Producto *empleado)
 {
-    o << "[" << empleado->id << "] - " << empleado->nombre << ", Cantidad:" << empleado->existencia;
+    o << "[" << empleado->id << "] - " << empleado->nombre << ", Cantidad: " << empleado->existencia;
     return o;
 }

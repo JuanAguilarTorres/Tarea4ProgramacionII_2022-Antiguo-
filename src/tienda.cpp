@@ -67,7 +67,7 @@ void Tienda::CargarDesdeStreamBinario(istream *streamEntrada)
 
 ostream& operator << (ostream &o, const Tienda *tienda)
 {
-    o << "AA: " << std::endl; //Pendiente
+    o << "TiendaA. Sitio: Tienda.com, Ubicación: 50m Norte, número: 12345678. Productos: " << std::endl; //Pendiente
 
     for (Producto *producto : tienda->productos)
     {
