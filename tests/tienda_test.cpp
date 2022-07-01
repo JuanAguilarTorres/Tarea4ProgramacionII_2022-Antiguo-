@@ -19,12 +19,13 @@ namespace
         
         // Act - ejecute la operación
         tiendaActual->agregarProducto(producto1);
+        tiendaActual->agregarProducto(2,"Cereal", 10);
 
         std::ostringstream streamActual;
 
         streamActual << tiendaActual;
 
-        std::string esperado = "TiendaA, Sitio: Tienda.com, Ubicación: 50m Norte, número: 12345678, Productos: \n[1] - Detergente, Cantidad: 5\n";
+        std::string esperado = "TiendaA, Sitio: Tienda.com, Ubicación: 50m Norte, número: 12345678, Productos: \n[1] - Detergente, Cantidad: 5\n[2] - Cereal, Cantidad: 10\n";
         std::string actual = streamActual.str();
 
         delete tiendaActual;
