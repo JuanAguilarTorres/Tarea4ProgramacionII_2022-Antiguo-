@@ -89,6 +89,24 @@ namespace
 
     }
 
+    TEST(Tienda_Test, consulta_Test)
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+        Tienda *tiendaActual = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
+
+        // Act - ejecute la operación
+        tiendaActual->agregarProducto(1,"Detergente", 5);
+        tiendaActual->editarProducto(1,"Pasta", 10);
+
+        string esperado = "TiendaA, Sitio: Tienda.com, Ubicación: 50m Norte, número: 12345678, Productos: \n[1] - Pasta, Cantidad: 10\n";
+        string actual = tiendaActual->consultarProductos();
+
+        // Assert - valide los resultados
+        EXPECT_EQ(esperado, actual);
+    }
+
     TEST(Tienda_Test, escribir_Leer_Binario_Tienda_Test)
     {
         /// AAA
