@@ -28,6 +28,8 @@ class Tienda {
 
     void editarProducto(int id, string nombre, int existencias);
 
+    string consultarProductos();
+
     void GuardarEnStreamBinario(ostream *streamSalida);
     void CargarDesdeStreamBinario(istream *streamEntrada);
     void CargarProductoPorPosicionDesdeStreamBinario(istream *streamEntrada, int posicionProducto);

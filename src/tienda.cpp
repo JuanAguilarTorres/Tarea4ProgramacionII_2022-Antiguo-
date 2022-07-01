@@ -1,6 +1,7 @@
 #include "tienda.h"
 #include <iostream>
 #include <cstring>
+#include <sstream>
 
 Tienda::Tienda(string nombre, string sitioWeb, string localizacion, string telefono)
 {
@@ -55,6 +56,22 @@ void Tienda::editarProducto(int id, string nombre, int existencias)
     this->agregarProducto(id, nombre, existencias);
 }
 
+string Tienda::consultarProductos(){
+    string consulta = "";
+    std::stringstream consultaStream;    
+
+    consultaStream << this->nombre << ", Sitio: " << this->sitioWeb << ", Ubicación: " << this->localizacion << ", número: " << this->telefono << ", Productos: " << std::endl;
+
+    for (Producto *producto : this->productos)
+    {
+        consultaStream << producto << endl;
+    }
+    
+    consulta = consultaStream.str();
+    return consulta;
+    
+}
+
 void Tienda::GuardarEnStreamBinario(ostream *streamSalida)
 {
     for (Producto *producto : this->productos)
@@ -94,7 +111,7 @@ void Tienda::CargarDesdeStreamBinario(istream *streamEntrada)
 
 ostream& operator << (ostream &o, const Tienda *tienda)
 {
-    o << tienda->nombre << ", Sitio: " << tienda->sitioWeb << ", Ubicación: " << tienda->localizacion << ", número: " << tienda->telefono << ", Productos: " << std::endl; //Pendiente
+    o << tienda->nombre << ", Sitio: " << tienda->sitioWeb << ", Ubicación: " << tienda->localizacion << ", número: " << tienda->telefono << ", Productos: " << std::endl;
 
     for (Producto *producto : tienda->productos)
     {
