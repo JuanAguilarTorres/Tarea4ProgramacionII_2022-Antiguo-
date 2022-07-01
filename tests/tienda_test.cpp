@@ -65,6 +65,23 @@ namespace
 
     }
 
+    TEST(Tienda_Test, borrar_inexistente_Test)  //El programa no se cae por la forma en que está programado, No sé si sea necesario hacer este control.
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+        Tienda *tienda = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
+
+        // Act - ejecute la operación
+        EXPECT_THROW({
+            tiendaActual->eliminarProducto(0);
+        }, excepcionBorrarInexistente);
+
+        delete tienda;
+
+        // Assert - valide los resultados
+    }
+
     TEST(Tienda_Test, editar_Producto_Test)
     {
         /// AAA
@@ -98,8 +115,7 @@ namespace
         Tienda *tiendaActual = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
 
         // Act - ejecute la operación
-        tiendaActual->agregarProducto(1,"Detergente", 5);
-        tiendaActual->editarProducto(1,"Pasta", 10);
+        tiendaActual->agregarProducto(1,"Pasta", 10);
 
         string esperado = "TiendaA, Sitio: Tienda.com, Ubicación: 50m Norte, número: 12345678, Productos: \n[1] - Pasta, Cantidad: 10\n";
         string actual = tiendaActual->consultarProductos();
@@ -165,7 +181,7 @@ namespace
         EXPECT_EQ(esperado, salidaTiendaLeidaDeArchivo);
     }
 
-    TEST(Tienda_Test, _Test)
+    TEST(Tienda_Test, _Test)    //Plantilla, Borrar
     {
         /// AAA
 
