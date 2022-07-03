@@ -65,23 +65,6 @@ namespace
 
     }
 
-    TEST(Tienda_Test, borrar_inexistente_Test)  //El programa no se cae por la forma en que está programado, No sé si sea necesario hacer este control.
-    {
-        /// AAA
-
-        // Arrange - configurar el escenario
-        Tienda *tienda = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
-
-        // Act - ejecute la operación
-        EXPECT_THROW({
-            tiendaActual->eliminarProducto(0);
-        }, excepcionBorrarInexistente);
-
-        delete tienda;
-
-        // Assert - valide los resultados
-    }
-
     TEST(Tienda_Test, editar_Producto_Test)
     {
         /// AAA
@@ -177,22 +160,8 @@ namespace
         // Primero, validar la salida de la Tienda esperada sea correcta
         EXPECT_EQ(esperado, salidaTiendaEsperada);
 
-        string salidaTiendaLeidaDeArchivo = streamSalidaTiendaEsperada.str();
+        string salidaTiendaLeidaDeArchivo = streamSalidaTiendaLeida.str();
         EXPECT_EQ(esperado, salidaTiendaLeidaDeArchivo);
-    }
-
-    TEST(Tienda_Test, _Test)    //Plantilla, Borrar
-    {
-        /// AAA
-
-        // Arrange - configurar el escenario
-
-        // Act - ejecute la operación
-        string esperado = "";
-        string actual = "";
-
-        // Assert - valide los resultados
-        EXPECT_EQ(esperado, actual);
     }
 }
 
