@@ -74,9 +74,12 @@ string Tienda::consultarProductos(){
 
 void Tienda::GuardarEnStreamBinario(ostream *streamSalida)
 {
+    
+    streamSalida->write((char *)this, 71);
+
     for (Producto *producto : this->productos)
     {
-        streamSalida->write((char *)producto, sizeof(producto));
+        streamSalida->write((char *)producto, sizeof(Producto));
     }
 }
 
@@ -95,10 +98,14 @@ void Tienda::CargarDesdeStreamBinario(istream *streamEntrada)
     // Calcule cantidad de registros
     streamEntrada->seekg( 0, std::ios::end );
     int cantidadBytesEnArchivo = streamEntrada->tellg();
-    int cantidadProductos = cantidadBytesEnArchivo / sizeof(Producto);
+    int cantidadProductos = ((cantidadBytesEnArchivo - 71) / sizeof(Producto));
+
+    //Leer la tienda
+    streamEntrada->seekg( 0, std::ios::beg ); // Empezar desde el principio del archivo
+    streamEntrada->read((char *)this, 71);
 
     // Leer cada producto
-    streamEntrada->seekg( 0, std::ios::beg ); // Empezar desde el principio del archivo
+    streamEntrada->seekg(71, std::ios::beg ); // Empezar desde el principio de los productos
     for (int indice = 0; indice < cantidadProductos; indice++)
     {
         Producto *producto = new Producto();
