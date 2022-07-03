@@ -26,6 +26,8 @@ Tienda::~Tienda()
 
 void Tienda::agregarProducto(Producto *nuevoProducto)
 {
+    int nuevoId = nuevoProducto->obtenerId();
+    this->eliminarProducto(nuevoId);
     this->productos.push_back(nuevoProducto);
 }
 
