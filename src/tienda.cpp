@@ -85,16 +85,6 @@ void Tienda::GuardarEnStreamBinario(ostream *streamSalida)
     }
 }
 
-void Tienda::CargarProductoPorPosicionDesdeStreamBinario(istream *streamEntrada, int posicionProducto)
-{
-    streamEntrada->seekg(sizeof(Producto) * posicionProducto);
-
-    Producto *producto = new Producto();
-    streamEntrada->read((char *)producto, sizeof(Producto));
-
-    this->agregarProducto(producto);
-}
-
 void Tienda::CargarDesdeStreamBinario(istream *streamEntrada)
 {
     // Calcule cantidad de registros

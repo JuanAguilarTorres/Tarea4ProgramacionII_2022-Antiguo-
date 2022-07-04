@@ -32,7 +32,6 @@ class Tienda {
 
     void GuardarEnStreamBinario(ostream *streamSalida);
     void CargarDesdeStreamBinario(istream *streamEntrada);
-    void CargarProductoPorPosicionDesdeStreamBinario(istream *streamEntrada, int posicionProducto);
 
     friend ostream& operator << (ostream &o, const Tienda *Tienda);
 };
