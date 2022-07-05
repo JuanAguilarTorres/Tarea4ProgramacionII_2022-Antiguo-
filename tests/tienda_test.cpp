@@ -3,6 +3,8 @@
 #include <fstream>
 #include <sstream>
 
+#include "./../src/excepcionAgregarDuplicado.h"
+#include "./../src/excepcionEliminarIncorrecto.h"
 #include "./../src/tienda.h"
 
 using namespace std;
@@ -35,6 +37,24 @@ namespace
 
     }
 
+    TEST(Tienda_Test, agregar_Producto_Duplicado_Test)
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+        Tienda *tiendaActual = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
+        tiendaActual->agregarProducto(1, "A", 1);
+
+        // Act - ejecute la operación
+        EXPECT_THROW({
+            tiendaActual->agregarProducto(1, "B", 1);
+        }, excepcionAgregarDuplicado);
+
+        delete tiendaActual;
+
+        // Assert - valide los resultados
+    }
+
     TEST(Tienda_Test, eliminar_Producto_Test)
     {
         /// AAA
@@ -63,6 +83,23 @@ namespace
         // Assert - valide los resultados
         EXPECT_EQ(esperado, actual);
 
+    }
+
+    TEST(Tienda_Test, eliminar_Producto_Incorrecto_Test)
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+        Tienda *tiendaActual = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
+
+        // Act - ejecute la operación
+        EXPECT_THROW({
+            tiendaActual->eliminarProducto(10);
+        }, excepcionEliminarIncorrecto);
+
+        delete tiendaActual;
+
+        // Assert - valide los resultados
     }
 
     TEST(Tienda_Test, editar_Producto_Test)

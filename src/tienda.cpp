@@ -2,6 +2,9 @@
 #include <iostream>
 #include <cstring>
 #include <sstream>
+#include <exception>
+#include "excepcionEliminarIncorrecto.h"
+#include "excepcionAgregarDuplicado.h"
 
 Tienda::Tienda(string nombre, string sitioWeb, string localizacion, string telefono)
 {
@@ -27,29 +30,52 @@ Tienda::~Tienda()
 void Tienda::agregarProducto(Producto *nuevoProducto)
 {
     int nuevoId = nuevoProducto->obtenerId();
-    this->eliminarProducto(nuevoId);
+
+    for (Producto *producto : this->productos)
+    {
+        if (nuevoId == producto->obtenerId()){
+            throw excepcionAgregarDuplicado();
+        }
+    }
+
     this->productos.push_back(nuevoProducto);
 }
 
 void Tienda::agregarProducto(int id, string nombre, int existencias)
 {
     Producto *nuevoProducto = new Producto(id, nombre, existencias);
+
+    int nuevoId = nuevoProducto->obtenerId();
+
+    for (Producto *producto : this->productos)
+    {
+        if (nuevoId == producto->obtenerId()){
+            throw excepcionAgregarDuplicado();
+        }
+    }
+
     this->productos.push_back(nuevoProducto);
 }
 
 void Tienda::eliminarProducto(int id)
 {  
     int indice = 0;
+    bool encontrado = false;
     for (Producto *producto : this->productos)
     {
         if (id == producto->obtenerId()){
             delete producto;
             productos.erase(productos.begin() + indice);
+            encontrado = true;
         }
         
         indice ++;
     }
     
+    if (encontrado != true)
+    {
+        throw excepcionEliminarIncorrecto();
+    }
 }
 
 void Tienda::editarProducto(int id, string nombre, int existencias)
