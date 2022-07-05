@@ -5,6 +5,7 @@
 #include <exception>
 #include "excepcionEliminarIncorrecto.h"
 #include "excepcionAgregarDuplicado.h"
+#include "excepcionEditarIncorrecto.h"
 
 Tienda::Tienda(string nombre, string sitioWeb, string localizacion, string telefono)
 {
@@ -80,8 +81,16 @@ void Tienda::eliminarProducto(int id)
 
 void Tienda::editarProducto(int id, string nombre, int existencias)
 {
-    this->eliminarProducto(id);
-    this->agregarProducto(id, nombre, existencias);
+    try
+    {
+        this->eliminarProducto(id);
+        this->agregarProducto(id, nombre, existencias);
+
+    }
+    catch(excepcionEliminarIncorrecto)
+    {
+        throw excepcionEditarIncorrecto();
+    }
 }
 
 string Tienda::consultarProductos(){

@@ -5,6 +5,7 @@
 
 #include "./../src/excepcionAgregarDuplicado.h"
 #include "./../src/excepcionEliminarIncorrecto.h"
+#include "./../src/excepcionEditarIncorrecto.h"
 #include "./../src/tienda.h"
 
 using namespace std;
@@ -137,7 +138,7 @@ namespace
         // Act - ejecute la operación
         EXPECT_THROW({
             tiendaActual->editarProducto(1, "Pasta", 10);
-        }, excepcionEliminarIncorrecto);
+        }, excepcionEditarIncorrecto);
 
         delete tiendaActual;
 
