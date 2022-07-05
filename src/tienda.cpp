@@ -93,7 +93,8 @@ void Tienda::editarProducto(int id, string nombre, int existencias)
     }
 }
 
-string Tienda::consultarProductos(){
+string Tienda::tiendaAString()
+{
     string consulta = "";
     std::stringstream consultaStream;    
 
@@ -107,6 +108,11 @@ string Tienda::consultarProductos(){
     consulta = consultaStream.str();
     return consulta;
     
+}
+
+vector<Producto *> Tienda::consultarProductos()
+{
+    return this->productos;
 }
 
 void Tienda::GuardarEnStreamBinario(ostream *streamSalida)

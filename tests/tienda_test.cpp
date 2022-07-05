@@ -145,7 +145,7 @@ namespace
         // Assert - valide los resultados
     }
 
-    TEST(Tienda_Test, consulta_Test)
+    TEST(Tienda_Test, aString_Test)
     {
         /// AAA
 
@@ -156,7 +156,26 @@ namespace
         tiendaActual->agregarProducto(1,"Pasta", 10);
 
         string esperado = "TiendaA, Sitio: Tienda.com, Ubicación: 50m Norte, número: 12345678, Productos: \n[1] - Pasta, Cantidad: 10\n";
-        string actual = tiendaActual->consultarProductos();
+        string actual = tiendaActual->tiendaAString();
+
+        // Assert - valide los resultados
+        EXPECT_EQ(esperado, actual);
+    }
+
+    TEST(Tienda_Test, consultar_Test)
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+        Tienda *tiendaActual = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
+        vector<Producto *> esperado;
+        Producto *producto1 = new Producto(1,"Detergente", 5);
+
+        // Act - ejecute la operación
+        tiendaActual->agregarProducto(producto1);
+        esperado.push_back(producto1);
+        
+        vector<Producto *> actual = tiendaActual->consultarProductos();
 
         // Assert - valide los resultados
         EXPECT_EQ(esperado, actual);
