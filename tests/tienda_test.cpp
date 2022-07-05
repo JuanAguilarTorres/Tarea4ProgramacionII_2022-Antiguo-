@@ -127,6 +127,23 @@ namespace
 
     }
 
+    TEST(Tienda_Test, editar_Producto_Incorrecto_Test)
+    {
+        /// AAA
+
+        // Arrange - configurar el escenario
+        Tienda *tiendaActual = new Tienda("TiendaA", "Tienda.com", "50m Norte", "12345678");
+
+        // Act - ejecute la operación
+        EXPECT_THROW({
+            tiendaActual->editarProducto(1, "Pasta", 10);
+        }, excepcionEliminarIncorrecto);
+
+        delete tiendaActual;
+
+        // Assert - valide los resultados
+    }
+
     TEST(Tienda_Test, consulta_Test)
     {
         /// AAA

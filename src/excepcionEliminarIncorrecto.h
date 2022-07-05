@@ -10,7 +10,7 @@ class excepcionEliminarIncorrecto : public std::exception
     ~excepcionEliminarIncorrecto() = default;
 
     virtual const char* what() const noexcept {
-        return "No se puede eliminar el id proporcionado";
+        return "No se puede hacer esta acción con el id proporcionado";
     }
 
 };
